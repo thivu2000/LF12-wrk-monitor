@@ -108,6 +108,48 @@ Phase 5: Refinement & Präsentation (Donnerstag - Freitag)
 
     T5.3: Erstellung der Projektdokumentation und Diagramme für die Abgabe. (2h)
 
+Teilaufgaben (SI):
+
+Phase 1: Freitag
+
+    T1.1: Proxmox Updaten und mögliche Fehler beheben (1,5h)  
+
+    T1.2: Netzwerktechnik überprüfen (1,5h)
+    
+Phase 2: Montag
+
+    T2.1: LXC bereitstellen (0,5h)
+
+    T2.2: Docker Host bereitstellen (1h)
+
+    T2.3: Postgres Datenbank bereitstellen (2h)
+
+Phase 3: Dienstag
+
+    T3.1: NFS Server bereitstellen (1,5h)
+
+    T3.2: LXC (admin) für Kubernetes bereitstellen (0,5)
+
+    T3.3: TalosOS herunterladen und VM-fähig machen (1h)
+    
+Phase 4: Mittwoch
+
+    T4.1: Kubernetes Cluster konfigurieren (3,5h)
+    
+Phase 5: Donnerstag 
+
+    T5.1: Kubernetes Cluster konfigurieren (1,5h)
+
+    T5.2: Cloud Nativ Postgres Deployen (2h)
+
+
+Phase 6: Freitag 
+
+    T6.1: Cloud Nativ Postgres Deployen (1,5h)
+
+    T6.2: Dokumentation (2h)
+
+    
 Gantt-Diagram:
 
 
