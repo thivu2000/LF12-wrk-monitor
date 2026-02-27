@@ -34,6 +34,8 @@ Anforderungen SI
 - Netzwerktechnik überprüfen 
 - Optional:
   - Kubernetes stack
+  - VPN möglichkeiten maybe mit Consultant
+  - Docker-Host für anderes Team zu verfügung stellen.
 
 Anforderungen AE
 - next.js framework auf Webserver einrichten
