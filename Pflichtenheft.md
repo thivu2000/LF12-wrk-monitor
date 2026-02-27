@@ -1,7 +1,7 @@
 # Pflichtenheft: WRK-Visualizer Dashboard
 **Projekt:** Visuelle Oberfläche für das WRK-Benchmarking-Tool  
 **Version:** 1.0  
-**Datum:** [Datum einfügen]  
+**Datum:** 27.02.2026
 **Status:** In Bearbeitung  
 
 ---
@@ -16,7 +16,9 @@ Das Projekt "WRK-Visualizer" soll eine benutzerfreundliche Web-Oberfläche (Dash
 * Containerisierung der gesamten Anwendung (Docker).
 
 ### 1.2 Wunsch-Ziele
-* [Hier weitere Ziele einfügen, z.B. Export als PDF, Vergleich von historischen Daten]
+* Keine Einschränkung der Performance durch Frontend / Wrapper
+* Anschauliche Frontend mit Tailwind.css gestalten
+* Export in verschiedenen Formaten (JSON/PDF)
 
 ---
 
@@ -44,7 +46,7 @@ Entwickler, DevOps-Engineers und QA-Tester.
 
 ## 4. Produktdaten (Nicht-funktionale Anforderungen)
 * **NF10 (Performance):** Die UI darf während des Benchmarks nicht blockieren.
-* **NF20 (Skalierbarkeit):** Unterstützung für Kubernetes-Deployment.
+* **NF20 (Skalierbarkeit):** Unterstützung für Kubernetes-Deployment (Datenbank).
 * **NF30 (Usability):** Intuitive Bedienung des Dashboards ohne CLI-Kenntnisse.
 
 ---
@@ -56,14 +58,65 @@ Entwickler, DevOps-Engineers und QA-Tester.
 * **Datenbank:** PostgreSQL
 
 ### 5.2 Externe Schnittstellen
-* **WRK CLI:** Anbindung des Wrappers an den nativen C-Prozess.
 * **Cloudnative-PG:** Schnittstelle zur Datenbank-Orchestrierung.
+
+---
+## Ressourcenplanung
+Zeitplanung:
+  - Stand-Up 9:45
+  - Sprint Review/Planung: 12:55
+
+Teilaufgaben (AE):
+
+Phase 1: Vorbereitung & Setup (Freitag)
+
+    T1.1: Anforderungsanalyse finalisieren & User Stories definieren. (2h)
+
+    T1.2: Lokale Entwicklungsumgebung mit wrk Installation aufsetzen. (0.5h)
+
+    T1.3: Initialisierung des Next.js Projekts mit TypeScript und Tailwind CSS. (0.5h)
+
+Phase 2: Infrastruktur & Daten (Montag)
+
+    T2.1: Dockerisierung der Next.js App (Dockerfile & Compose). (0.5h)
+
+    T2.2: Setup der PostgreSQL Instanz via CloudNative-PG Manifesten. (1h)
+
+    T2.3: Datenbank-Schema-Design (Tabellen für Benchmarks, Results und Parameters). (0.5h)
+
+Phase 3: Core-Logik & Backend (Dienstag)
+
+    T3.1: Entwicklung des WRK-Wrappers (Node.js child_process Anbindung). (1h)
+
+    T3.2: Parser-Logik schreiben, um CLI-Text-Output in JSON-Objekte zu konvertieren. (1h)
+
+    T3.3: API-Endpoints erstellen (POST /run-benchmark, GET /results). (1.5h)
+
+Phase 4: Frontend & Visualisierung (Mittwoch)
+
+    T4.1: Entwicklung des Konfigurations-Panels (Formulareingabe für URLs/Parameter). (1h)
+
+    T4.2: Integration von Chart.js/Recharts zur Darstellung der Latenz und RPS. (1h)
+
+    T4.3: Implementierung der Vergleichsansicht (Multi-URL Vergleich). (2h)
+
+Phase 5: Refinement & Präsentation (Donnerstag - Freitag)
+
+    T5.1: Bugfixing & Performance-Optimierung (Non-blocking UI Check). (2h)
+
+    T5.2: Export-Funktion implementieren (JSON Download). (1h)
+
+    T5.3: Erstellung der Projektdokumentation und Diagramme für die Abgabe. (2h)
+
+Gantt-Diagram:
+
+
 
 ---
 
 ## 6. Benutzeroberfläche (UI-Design)
 * [ ] **Dashboard-Ansicht:** Liste der aktiven/vergangenen Tests.
-* [ ] **Konfigurations-Panel:** Formular für URL-Eingabe und Header-Einstellungen.
+* [ ] **Konfigurations-Panel:** Formular für URL-Eingabe und Header-Einstellungen (Methoden).
 * [ ] **Analyse-View:** Charts (z.B. Chart.js oder Recharts) für Latenzverteilung.
 
 ---
@@ -71,7 +124,7 @@ Entwickler, DevOps-Engineers und QA-Tester.
 ## 7. Qualitätsanforderungen
 | Produktqualität | Sehr hoch | Hoch | Relevant |
 | :--- | :---: | :---: | :---: |
-| Zuverlässigkeit | | X | |
+| Zuverlässigkeit | X |  | |
 | Benutzbarkeit | | X | |
 | Performance | X | | |
 | Wartbarkeit | | | X |
