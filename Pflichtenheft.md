@@ -137,7 +137,7 @@ Phase 2: Montag
 
 Phase 3: Dienstag
 
-    T3.1: NFS Server bereitstellen (1,5h)
+    T3.1: NFS Server bereitstellen (2h)
 
     T3.2: LXC (admin) für Kubernetes bereitstellen (0,5)
 
@@ -152,13 +152,6 @@ Phase 5: Donnerstag
     T5.1: Kubernetes Cluster konfigurieren (1,5h)
 
     T5.2: Cloud Nativ Postgres Deployen (2h)
-
-
-Phase 6: Freitag 
-
-    T6.1: Cloud Nativ Postgres Deployen (1,5h)
-
-    T6.2: Dokumentation (2h)
 
     
 Gantt-Diagram:
