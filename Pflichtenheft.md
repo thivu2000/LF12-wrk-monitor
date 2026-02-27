@@ -166,8 +166,70 @@ Phase 5: Donnerstag
     
 Gantt-Diagram:
 
+```mermaid
+gantt
+    title Montag 02.03.2026 – Detailplanung
+    dateFormat  YYYY-MM-DD HH:mm
+    axisFormat  %H:%M
+    todayMarker off
 
+    section AE
+    Dockerfile & Compose      :crit, 2026-03-02 10:00, 45m
+    Einbindung DB              :crit, 2026-03-02 11:00, 45m
 
+    section SI
+    LXC bereitstellen          :2026-03-02 10:00, 45m
+    Docker Host bereitstellen  :2026-03-02 11:00, 75m
+    Postgres bereitstellen     :2026-03-02 13:10, 130m
+```
+```mermaid
+gantt
+    title Dienstag 03.03.2026 – Detailplanung
+    dateFormat  YYYY-MM-DD HH:mm
+    axisFormat  %H:%M
+    todayMarker off
+
+    section AE
+    WRK Wrapper        :crit, 2026-03-03 10:00, 75m
+    Parser             :crit, 2026-03-03 11:30, 60m
+    API Endpoints      :crit, 2026-03-03 13:45, 75m
+
+    section SI
+    NFS Server         :2026-03-03 10:00, 105m
+    LXC admin          :2026-03-03 13:10, 30m
+    TalosOS            :2026-03-03 14:00, 60m
+```
+
+```mermaid
+gantt
+    title Mittwoch 04.03.2026 – Detailplanung
+    dateFormat  YYYY-MM-DD HH:mm
+    axisFormat  %H:%M
+    todayMarker off
+
+    section AE
+    Konfigurations Panel        :crit, 2026-03-04 10:00, 60m
+    Integration Chart.js        :crit, 2026-03-04 11:15, 60m
+    Multi URL Vergleich         :crit, 2026-03-04 13:20, 120m
+
+    section SI
+    Kubernetes Cluster          :2026-03-04 10:00, 240m
+```
+```mermaid
+gantt
+    title Donnerstag 05.03.2026 – Detailplanung
+    dateFormat  YYYY-MM-DD HH:mm
+    axisFormat  %H:%M
+    todayMarker off
+
+    section AE
+    Bugfixing                    :crit, 2026-03-05 10:00, 135m
+    Export Funktion              :crit, 2026-03-05 13:10, 80m
+
+    section SI
+    Kubernetes konfigurieren     :2026-03-05 10:00, 90m
+    Cloud Native Postgres        :2026-03-05 13:15, 125m
+```
 ---
 
 ## 6. Benutzeroberfläche (UI-Design)
