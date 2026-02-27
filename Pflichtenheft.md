@@ -32,7 +32,17 @@ Das Projekt "WRK-Visualizer" soll eine benutzerfreundliche Web-Oberfläche (Dash
 * Unit-Test für Ausführung und Berechnung von Metriken
 * Integration Test für die Nutzung des Dashboards
 
+### 1.4 Funktionale Anforderungen (SI)
 
+* Docker Host bereitstellen
+* Datenbank bereitstellen (PostgresSQL)
+* Proxmox bereitstellen
+* Linux Container (Debian 13) bereitstellen
+* Netzwerktechnik überprüfen
+* Optional:
+  * Kubernetes stack
+  * VPN möglichkeiten maybe mit Consultant
+  * Docker-Host für anderes Team zu verfügung stellen.
 ---
 
 ## 2. Produkteinsatz
