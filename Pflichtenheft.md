@@ -1,5 +1,7 @@
 # Pflichtenheft: WRK-Visualizer Dashboard
-**Projekt:** Visuelle Oberfläche für das WRK-Benchmarking-Tool  
+**Projekt:** Visuelle Oberfläche für das WRK-Benchmarking-Tool 
+**Teams** Team (AE): Thi, Oskar 
+          Team (SI): Tobias, Ricardo
 **Version:** 1.0  
 **Datum:** 27.02.2026
 **Status:** In Bearbeitung  
@@ -19,6 +21,17 @@ Das Projekt "WRK-Visualizer" soll eine benutzerfreundliche Web-Oberfläche (Dash
 * Keine Einschränkung der Performance durch Frontend / Wrapper
 * Anschauliche Frontend mit Tailwind.css gestalten
 * Export in verschiedenen Formaten (JSON/PDF)
+
+### 1.3 Funktionale Anforderungen (AE)
+
+* next.js framework auf Webserver einrichten
+* Datenbank einbinden
+* Dashboard implementieren
+* Befehlsausführung auf Dashboard einrichten
+* API-Einbindung
+* Unit-Test für Ausführung und Berechnung von Metriken
+* Integration Test für die Nutzung des Dashboards
+
 
 ---
 
@@ -80,9 +93,7 @@ Phase 2: Infrastruktur & Daten (Montag)
 
     T2.1: Dockerisierung der Next.js App (Dockerfile & Compose). (0.5h)
 
-    T2.2: Setup der PostgreSQL Instanz via CloudNative-PG Manifesten. (1h)
-
-    T2.3: Datenbank-Schema-Design (Tabellen für Benchmarks, Results und Parameters). (0.5h)
+    T2.2: Datenbank-Schema-Design (Einbindung) (Tabellen für Benchmarks, Results und Parameters). (0.5h)
 
 Phase 3: Core-Logik & Backend (Dienstag)
 
@@ -164,12 +175,12 @@ Gantt-Diagram:
 ---
 
 ## 7. Qualitätsanforderungen
-| Produktqualität | Sehr hoch | Hoch | Relevant |
-| :--- | :---: | :---: | :---: |
-| Zuverlässigkeit | X |  | |
-| Benutzbarkeit | | X | |
-| Performance | X | | |
-| Wartbarkeit | | | X |
+| Produktqualität | Sehr hoch | Hoch | Relevant | Begründung |
+| :--- | :---: | :---: | :---: | |
+| Zuverlässigkeit | X |  | |  |
+| Benutzbarkeit | | X | | |
+| Performance | X | | | |
+| Wartbarkeit | | X | | |
 
 ---
 
@@ -186,3 +197,13 @@ Gantt-Diagram:
 * **Cloudnative-PG:** Kubernetes-Operator für PostgreSQL.
 
 ## 10. Techstack
+
+Komponente	Technologie	Zweck
+Framework	Next.js 14/15	Fullstack-Framework für SSR und API-Routes.
+Styling	Tailwind CSS	Schnelles, responsives UI-Design.
+Sprache	TypeScript	Typsicherheit für komplexe Benchmark-Daten.
+Datenbank	PostgreSQL	Relationale Speicherung der Testergebnisse.
+ORM	Prisma / Drizzle	Einfache Kommunikation mit der Datenbank.
+Infrastruktur	Docker	Portabilität der gesamten App.
+K8s Operator	CloudNative-PG	Automatisiertes Management der DB in Kubernetes.
+Charts	Recharts	Deklarative Diagramme für React.
