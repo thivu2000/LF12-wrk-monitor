@@ -27,7 +27,13 @@ Die Anwendung wird modern und hochverfügbar konzipiert:
 Das Dashboard soll folgende Metriken für mehrere URLs im Vergleich (Benchmark) verarbeiten:
 
 Anforderungen SI 
-(TOBSEN WOLLTE DAS NOCH MACHEN)
+- Docker Host bereitstellen
+- Datenbank bereitstellen (PostgresSQL)
+- Proxmox bereitstellen
+- Linux Container (Debian 13) bereitstellen
+- Netzwerktechnik überprüfen 
+- Optional:
+  - Kubernetes stack
 
 Anforderungen AE
 - next.js framework auf Webserver einrichten
