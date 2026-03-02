@@ -1,7 +1,8 @@
 # Pflichtenheft: WRK-Visualizer Dashboard
-**Projekt:** Visuelle Oberfläche für das WRK-Benchmarking-Tool 
-**Teams** Team (AE): Thi, Oskar 
-          Team (SI): Tobias, Ricardo
+**Projekt:** Visuelle Oberfläche für das WRK-Benchmarking-Tool  
+**Teams:**   
+          - Team (AE): Thi, Oskar  
+          - Team (SI): Tobias, Ricardo  
 **Version:** 1.0  
 **Datum:** 27.02.2026
 **Status:** In Bearbeitung  
@@ -38,11 +39,12 @@ Das Projekt "WRK-Visualizer" soll eine benutzerfreundliche Web-Oberfläche (Dash
 * Datenbank bereitstellen (PostgresSQL)
 * Proxmox bereitstellen
 * Linux Container (Debian 13) bereitstellen
+* Linux Container (Webserver) bereitstellen
 * Netzwerktechnik überprüfen
 * Optional:
-  * Kubernetes stack
-  * VPN möglichkeiten maybe mit Consultant
-  * Docker-Host für anderes Team zu verfügung stellen.
+  * Kubernetes Stack
+  * VPN Consultant
+  * Docker-Host für anderes Team zur Verfügung stellen
 ---
 
 ## 2. Produkteinsatz
@@ -50,20 +52,20 @@ Das Projekt "WRK-Visualizer" soll eine benutzerfreundliche Web-Oberfläche (Dash
 Das Tool dient der Performance-Analyse von Web-Services während der Entwicklungs- und Testphase.
 
 ### 2.2 Zielgruppen
-Entwickler, DevOps-Engineers und QA-Tester.
+Entwickler, DevOps-Engineers in Unternehmen die Bedarf für eine einfaches anschauliches Tool zum Benchmarking und Monitoring haben.
 
 ### 2.3 Betriebsbedingungen
-* Lauffähig in Docker-Umgebungen.
-* Orchestrierung via Kubernetes (Cloudnative-PG).
+* Lauffähig in Docker-Umgebungen (Containerisierung)
+* Orchestrierung via Kubernetes (Cloudnative-PG)
 
 ---
 
 ## 3. Produktfunktionen (Funktionale Anforderungen)
-* **F10:** Starten eines WRK-Benchmarks über die Weboberfläche.
-* **F20:** Eingabe von Parametern (Dauer, Threads, Connections).
-* **F30:** Echtzeit- oder Post-Benchmark-Visualisierung der Daten.
-* **F40:** Vergleichsansicht für mehrere Ziel-URLs.
-* **F50:** Persistente Speicherung der Testläufe.
+* **F10:** Starten eines WRK-Benchmarks über die Weboberfläche
+* **F20:** Eingabe von Parametern (Dauer, Threads, Connections)
+* **F30:** Echtzeit- oder Post-Benchmark-Visualisierung der Daten
+* **F40:** Vergleichsansicht für mehrere Ziel-URLs
+* **F50:** Persistente Speicherung der Testläufe
 
 ---
 
@@ -196,6 +198,7 @@ gantt
 
     section SI
     NFS Server         :2026-03-03 10:00, 105m
+    Puffer (Tobias)    :2026-03-03 10:00, 170m 
     LXC admin          :2026-03-03 13:10, 30m
     TalosOS            :2026-03-03 14:00, 60m
 ```
