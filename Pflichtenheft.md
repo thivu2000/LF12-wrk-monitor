@@ -1,7 +1,7 @@
 # Pflichtenheft: WRK-Visualizer Dashboard
 **Projekt:** Visuelle Oberfläche für das WRK-Benchmarking-Tool  
 **Teams:**   
-          - Team (AE): Thi, Oskar  
+          - Team (AE): Nico, Oskar  
           - Team (SI): Tobias, Ricardo  
 **Version:** 1.0  
 **Datum:** 27.02.2026
@@ -82,6 +82,49 @@ Entwickler, DevOps-Engineers in Unternehmen die Bedarf für eine einfaches ansch
 * **Backend:** Next.js API Routes / Node.js
 * **Datenbank:** PostgreSQL
 
+UML-Diagram:
+
+```mermaid
+graph TD
+    subgraph "Client Layer (Frontend - Next.js/React)"
+        UI[Dashboard UI]
+        CP[Konfigurations-Panel]
+        Charts[Visualisierung - Chart.js]
+        UI --- CP
+        UI --- Charts
+    end
+
+    subgraph "Server Layer (Next.js API & Node.js)"
+        API[API Endpoints /run-benchmark]
+        Parser[Regex Parser / Logic]
+        Wrapper[WRK-Wrapper child_process]
+        
+        API --> Wrapper
+        Wrapper --> Parser
+        Parser --> API
+    end
+
+    subgraph "External / CLI"
+        WRK_CLI[WRK Tool Binary]
+    end
+
+    subgraph "Infrastructure & Persistence"
+        DB[(PostgreSQL)]
+        CNPG[Cloudnative-PG / K8s]
+        DB --- CNPG
+    end
+
+    %% Relations
+    CP -- "POST Params" --> API
+    Wrapper -- "Executes" --> WRK_CLI
+    WRK_CLI -- "Stdout" --> Wrapper
+    API -- "Store/Fetch Results" --> DB
+    API -- "JSON Data" --> Charts
+
+    style UI fill:#f9f,stroke:#333,stroke-width:2px
+    style WRK_CLI fill:#dfd,stroke:#333,stroke-width:2px
+    style DB fill:#bbf,stroke:#333,stroke-width:2px
+```
 ### 5.2 Externe Schnittstellen
 * **Cloudnative-PG:** Schnittstelle zur Datenbank-Orchestrierung.
 
@@ -177,7 +220,7 @@ gantt
 
     section AE
     Dockerfile & Compose      :crit, 2026-03-02 10:00, 45m
-    Einbindung DB              :crit, 2026-03-02 11:00, 45m
+    Einbindung DB vorbereiten :crit, 2026-03-02 11:00, 45m
 
     section SI
     LXC bereitstellen          :2026-03-02 10:00, 45m
@@ -198,7 +241,7 @@ gantt
 
     section SI
     NFS Server         :2026-03-03 10:00, 105m
-    Puffer (Tobias)    :2026-03-03 10:00, 170m 
+    Puffer (Tobias)    :2026-03-03 11:50, 80m 
     LXC admin          :2026-03-03 13:10, 30m
     TalosOS            :2026-03-03 14:00, 60m
 ```
@@ -243,12 +286,12 @@ gantt
 ---
 
 ## 7. Qualitätsanforderungen
-| Produktqualität | Sehr hoch | Hoch | Relevant | Begründung |
-| :--- | :---: | :---: | :---: | |
-| Zuverlässigkeit | X |  | |  |
-| Benutzbarkeit | | X | | |
-| Performance | X | | | |
-| Wartbarkeit | | X | | |
+| Qualitätsmerkmal | Sehr hoch | Hoch | Relevant | Begründung |
+| :--- | :---: | :---: | :---: | :--- |
+| **Zuverlässigkeit** | X | | | Da das Tool Lasttests durchführt, müssen die Ergebnisse präzise und reproduzierbar sein. Systemausfälle während einer Messung würden die Validität der Benchmarks zerstören. |
+| **Benutzbarkeit** | | X | | Das Frontend soll die Komplexität der `wrk`-CLI abstrahieren. Eine intuitive Bedienung ist entscheidend, damit Nutzer Tests ohne tiefgreifende Terminal-Kenntnisse konfigurieren können. |
+| **Performance** | X | | | Das Tool darf selbst keinen Overhead erzeugen. Die Web-UI muss in der Lage sein, die hohen Datenraten von `wrk` in Echtzeit zu visualisieren, ohne den Test-Host zu belasten. |
+| **Wartbarkeit** | | X | | Der modulare Aufbau ist wichtig, um auf Änderungen in der `wrk`-Basis reagieren zu können oder neue Analyse-Features (wie den Export von Reports) leicht zu integrieren. |
 
 ---
 
@@ -266,12 +309,14 @@ gantt
 
 ## 10. Techstack
 
-Komponente	Technologie	Zweck
-Framework	Next.js 14/15	Fullstack-Framework für SSR und API-Routes.
-Styling	Tailwind CSS	Schnelles, responsives UI-Design.
-Sprache	TypeScript	Typsicherheit für komplexe Benchmark-Daten.
-Datenbank	PostgreSQL	Relationale Speicherung der Testergebnisse.
-ORM	Prisma / Drizzle	Einfache Kommunikation mit der Datenbank.
-Infrastruktur	Docker	Portabilität der gesamten App.
-K8s Operator	CloudNative-PG	Automatisiertes Management der DB in Kubernetes.
-Charts	Recharts	Deklarative Diagramme für React.
+| Ebene | Komponente | Zweck | Hinweise / Plugins / Tools |
+| :--- | :--- | :--- | :--- |
+| **Frontend** | Dashboard & UI | Visualisierung von Metriken (RPS, Latenz) und Steuerung der Tests. | Next.js, Tailwind CSS, Chart.js / Recharts |
+| **Frontend** | Konfigurations-Panel | Eingabemaske für Benchmark-Parameter (URL, Threads, Dauer). | React Forms, Validierung |
+| **Backend / API** | Next.js API Routes | Schnittstelle zwischen UI und Logik; Handling von Testanfragen. | Node.js, TypeScript |
+| **Backend / Logic** | WRK-Wrapper | Ausführung des CLI-Tools und Umwandlung von Text-Output in Daten. | Child_process, Regex Parser |
+| **Datenbank** | PostgreSQL | Persistente Speicherung von Testergebnissen, Parametern und Historie. | Cloudnative-PG, Prisma/Drizzle (optional) |
+| **Infrastruktur** | Docker-Umgebung | Containerisierung der Applikation für konsistente Ausführung. | Docker, Docker Compose |
+| **Infrastruktur** | Proxmox / LXC | Bereitstellung der virtuellen Host-Umgebung und Server. | Debian 13, Linux Container |
+| **Orchestrierung** | Kubernetes | Skalierbarer Betrieb und Management der Datenbank/Anwendung. | K8s Stack, TalosOS, NFS Server |
+| **Qualitätssicherung** | Test-Suite | Sicherstellung der korrekten Berechnung und UI-Funktion. | Unit-Tests, Integration-Tests |
